@@ -26,9 +26,9 @@ jobs:
     - name: Build with Maven
 #     mvn -B package --file demo/pom.xml
       run: |
-           cd demo && mvn clean install && cd ..
-           mkdir artifacts && cp demo/target/*.war artifacts
-           cd artifacts && ls
+           cd demo && mvn clean install && ls && 
+          #  mkdir artifacts && cp demo/target/*.war artifacts
+          #  cd artifacts && ls
     - name: Save ATSApp WAR file 
       uses: actions/upload-artifact@v2
       with:
