@@ -27,10 +27,10 @@ jobs:
 #     mvn -B package --file demo/pom.xml
       run: |
            cd demo && mvn clean install && cd ..
-           mkdir ATSApp && cp demo/target/*.war ATSApp
-           cd ATSApp && ls
+           mkdir artifacts && cp demo/target/*.war artifacts
+           cd artifacts && ls
     - name: Save ATSApp WAR file 
       uses: actions/upload-artifact@v2
       with:
         name: github-actions-artifact
-        path: ATSApp
+        path: artifacts
