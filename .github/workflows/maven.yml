@@ -22,7 +22,7 @@ jobs:
     - name: Build with Maven
 #     mvn -B package --file demo/pom.xml
       run: |
-           cd demo && mvn clean install
+           cd demo && mvn clean install && cd ..
            mkdir artifacts && cp demo/target/*.jar artifacts
            cd artifacts && ls
     - name: Save artifact 
