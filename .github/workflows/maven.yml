@@ -1,0 +1,32 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    - name: Build with Maven
+#     mvn -B package --file demo/pom.xml
+      run: |
+           cd demo && mvn clean install && cd ..
+           mkdir artifacts && cp demo/target/*.jar artifacts
+           cd artifacts && ls
+    - name: Save artifact 
+      uses: actions/upload-artifact@v2
+      with:
+        name: github-actions-artifact
+        path: artifacts
